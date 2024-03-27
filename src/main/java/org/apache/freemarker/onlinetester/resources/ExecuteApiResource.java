@@ -146,23 +146,23 @@ public class ExecuteApiResource {
 
     private String lengthCheckAndGetTemplate(ExecuteRequest req, List<ExecuteResponseProblem> problems) {
         String template = req.getTemplate();
-        if (template != null && template.length() > MAX_TEMPLATE_INPUT_LENGTH) {
-            String error = formatMessage(MAX_TEMPLATE_INPUT_LENGTH_EXCEEDED_ERROR_MESSAGE, MAX_TEMPLATE_INPUT_LENGTH);
-            problems.add(new ExecuteResponseProblem(ExecuteRequest.Field.TEMPLATE, error));
-            return null;
-        }
+        // if (template != null && template.length() > MAX_TEMPLATE_INPUT_LENGTH) {
+        //     String error = formatMessage(MAX_TEMPLATE_INPUT_LENGTH_EXCEEDED_ERROR_MESSAGE, MAX_TEMPLATE_INPUT_LENGTH);
+        //     problems.add(new ExecuteResponseProblem(ExecuteRequest.Field.TEMPLATE, error));
+        //     return null;
+        // }
         return template;
     }
 
     private Map<String, Object> parseDataModel(ExecuteRequest req, List<ExecuteResponseProblem> problems) {
         String dataModel = req.getDataModel();
 
-        if (dataModel.length() > MAX_DATA_MODEL_INPUT_LENGTH) {
-            String error = formatMessage(
-                    MAX_DATA_MODEL_INPUT_LENGTH_EXCEEDED_ERROR_MESSAGE, MAX_DATA_MODEL_INPUT_LENGTH);
-            problems.add(new ExecuteResponseProblem(ExecuteRequest.Field.DATA_MODEL, error));
-            return null;
-        }
+        // if (dataModel.length() > MAX_DATA_MODEL_INPUT_LENGTH) {
+        //     String error = formatMessage(
+        //             MAX_DATA_MODEL_INPUT_LENGTH_EXCEEDED_ERROR_MESSAGE, MAX_DATA_MODEL_INPUT_LENGTH);
+        //     problems.add(new ExecuteResponseProblem(ExecuteRequest.Field.DATA_MODEL, error));
+        //     return null;
+        // }
         
         try {
             return DataModelParser.parse(dataModel, freeMarkerService.getFreeMarkerTimeZone());
